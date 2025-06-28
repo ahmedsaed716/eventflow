@@ -16,6 +16,7 @@ import EventCreationManagement from "pages/event-creation-management";
 import AttendeeManagementAnalytics from "pages/attendee-management-analytics";
 import UsherCheckInInterface from "pages/usher-check-in-interface";
 import UserManagement from "pages/user-management";
+import ThemeSettings from "pages/theme-settings";
 import NotFound from "pages/NotFound";
 
 const Routes = () => {
@@ -26,7 +27,7 @@ const Routes = () => {
         <RoleBasedHeader />
         <AdminSidebar />
         <UserProgressIndicator />
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background dark:bg-dark-background transition-colors duration-300">
           <RouterRoutes>
             <Route path="/" element={<LoginRegister />} />
             <Route path="/login-register" element={<LoginRegister />} />
@@ -36,6 +37,7 @@ const Routes = () => {
             <Route path="/attendee-management-analytics" element={<AttendeeManagementAnalytics />} />
             <Route path="/usher-check-in-interface" element={<UsherCheckInInterface />} />
             <Route path="/user-management" element={<UserManagement />} />
+            <Route path="/theme-settings" element={<ThemeSettings />} />
             <Route path="*" element={<NotFound />} />
           </RouterRoutes>
         </div>

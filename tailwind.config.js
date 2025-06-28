@@ -4,6 +4,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -37,10 +38,20 @@ module.exports = {
         'background': '#FAFAFA', // Soft off-white (gray-50)
         'surface': '#FFFFFF', // Pure white (white)
         
+        // Dark Theme Background Colors
+        'dark-background': '#0F172A', // Dark slate (slate-900)
+        'dark-surface': '#1E293B', // Dark slate (slate-800)
+        'dark-surface-secondary': '#334155', // Medium dark slate (slate-700)
+        
         // Text Colors
         'text-primary': '#1E293B', // Deep charcoal (slate-800)
         'text-secondary': '#64748B', // Medium gray (slate-500)
         'text-muted': '#94A3B8', // Light gray (slate-400)
+        
+        // Dark Theme Text Colors
+        'dark-text-primary': '#F8FAFC', // Very light slate (slate-50)
+        'dark-text-secondary': '#CBD5E1', // Light slate (slate-300)
+        'dark-text-muted': '#94A3B8', // Medium slate (slate-400)
         
         // Status Colors
         'success': '#10B981', // Confident green (emerald-500)
@@ -64,6 +75,8 @@ module.exports = {
         // Border Colors
         'border': '#E2E8F0', // Light slate border (slate-200)
         'border-light': '#F1F5F9', // Very light border (slate-100)
+        'dark-border': '#475569', // Dark border (slate-600)
+        'dark-border-light': '#64748B', // Light dark border (slate-500)
       },
       fontFamily: {
         'heading': ['Inter', 'system-ui', 'sans-serif'],
@@ -100,6 +113,9 @@ module.exports = {
         'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
         'elevated': '0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)',
         'floating': '0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06)',
+        'dark-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
+        'dark-base': '0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2)',
+        'dark-md': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
       },
       spacing: {
         '18': '4.5rem',
@@ -111,6 +127,7 @@ module.exports = {
         'scale-in': 'scaleIn 0.2s ease-out',
         'shimmer': 'shimmer 1.5s linear infinite',
         'gentle-bounce': 'gentleBounce 2s ease-in-out infinite',
+        'theme-transition': 'themeTransition 0.3s ease-in-out',
       },
       keyframes: {
         fadeIn: {
@@ -132,6 +149,10 @@ module.exports = {
         gentleBounce: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-4px)' },
+        },
+        themeTransition: {
+          '0%': { opacity: '0.8' },
+          '100%': { opacity: '1' },
         },
       },
       transitionTimingFunction: {

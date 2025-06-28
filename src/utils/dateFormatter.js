@@ -1,6 +1,6 @@
 // src/utils/dateFormatter.js
 import { parseISO, formatDistanceToNow, isValid } from 'date-fns';
-import { zonedTimeToUtc, utcToZonedTime, format as formatTz } from 'date-fns-tz';
+import { fromZonedTime, toZonedTime, format as formatTz } from 'date-fns-tz';
 import { ar } from 'date-fns/locale';
 
 // Default timezone for Egypt
@@ -20,7 +20,7 @@ export const formatDateEgypt = (date, formatString = 'PPP', options = {}) => {
     const dateObj = typeof date === 'string' ? parseISO(date) : date;
     if (!isValid(dateObj)) return 'Invalid Date';
     
-    const zonedDate = utcToZonedTime(dateObj, timezone);
+    const zonedDate = toZonedTime(dateObj, timezone);
     
     return formatTz(zonedDate, formatString, {
       timeZone: timezone,
@@ -65,8 +65,8 @@ export const formatEventDate = (startDate, endDate = null, options = {}) => {
     const endDateObj = typeof endDate === 'string' ? parseISO(endDate) : endDate;
     
     // Check if same day
-    const startZoned = utcToZonedTime(startDateObj, timezone);
-    const endZoned = utcToZonedTime(endDateObj, timezone);
+    const startZoned = toZonedTime(startDateObj, timezone);
+    const endZoned = toZonedTime(endDateObj, timezone);
     
     const isSameDay = formatTz(startZoned, 'yyyy-MM-dd', { timeZone: timezone }) === 
                       formatTz(endZoned, 'yyyy-MM-dd', { timeZone: timezone });
@@ -119,7 +119,7 @@ export const toUTC = (date, timezone = EGYPT_TIMEZONE) => {
     const dateObj = typeof date === 'string' ? parseISO(date) : date;
     if (!isValid(dateObj)) return null;
     
-    return zonedTimeToUtc(dateObj, timezone);
+    return fromZonedTime(dateObj, timezone);
   } catch (error) {
     console.log('UTC conversion error:', error);
     return null;
@@ -128,7 +128,7 @@ export const toUTC = (date, timezone = EGYPT_TIMEZONE) => {
 
 // Get current Egypt time
 export const nowInEgypt = () => {
-  return utcToZonedTime(new Date(), EGYPT_TIMEZONE);
+  return toZonedTime(new Date(), EGYPT_TIMEZONE);
 };
 
 // Check if event is happening now
